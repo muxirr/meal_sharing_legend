@@ -1,5 +1,14 @@
 #define SDL_MAIN_HANDLED
 
-#include <SDL2.h>
+#include "res_mgr.h"
 
-int WinMain() { return 0; }
+#include <SDL.h>
+#include <SDL_image.h>
+#include <SDL_mixer.h>
+
+int WinMain() {
+  SDL_Init(SDL_INIT_EVERYTHING);
+  IMG_Init(IMG_INIT_PNG);
+  Mix_Init(MIX_INIT_MP3);
+  return 0;
+}
