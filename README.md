@@ -29,7 +29,7 @@ CMakePresets.json <br>
 
 ---
 
-1. 编译准备
+2. 编译准备
 
 -   使用 mingw 编译 <br>
     推荐使用 vscode 打开，使用 vs 打开可能会出问题，vscode 需要安装 c++以及 cmake 插件 <br>
@@ -50,5 +50,5 @@ CMakePresets.json <br>
 可以使用我上传的 dll 文件，或者使用 mingw 编译的 dll 库 <br>
 编译预设选择 Debug-win 或 Release-win，编译完把库文件以及可执行文件复制到资源文件同目录下即可 <br>
 
-[参考视频](https://www.bilibili.com/video/BV1wDUcYBEQB) <br>
+[参考视频](https://www.bilibili.com/video/BV1wWCJY3EEJ) <br>
 [mingw 下载链接](https://github.com/niXman/mingw-builds-binaries/releases)
