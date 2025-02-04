@@ -1,0 +1,99 @@
+{
+    "version": 2,
+    "configurePresets": [
+        {
+            "name": "default",
+            "hidden": true,
+            "generator": "Ninja",
+            "environment": {
+                "COMPILER_DIR": "D:/usr/scoop/apps/mingw/current/bin",
+                "VCPKG_ROOT": "D:/usr/scoop/apps/vcpkg/current"
+            },
+            "cacheVariables": {
+                "VCPKG_TARGET_TRIPLET": "x64-mingw-dynamic",
+                "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+                "CMAKE_ASM_COMPILER": "$env{COMPILER_DIR}/cc.exe",
+                "CMAKE_C_COMPILER": "$env{COMPILER_DIR}/gcc.exe",
+                "CMAKE_CXX_COMPILER": "$env{COMPILER_DIR}/g++.exe"
+            }
+        },
+        {
+            "name": "default-win",
+            "hidden": true,
+            "generator": "Ninja",
+            "environment": {
+                "COMPILER_DIR": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.42.34433/bin/HostX64/x64",
+                "VCPKG_ROOT": "D:/usr/scoop/apps/vcpkg/current"
+            },
+            "cacheVariables": {
+                "VCPKG_TARGET_TRIPLET": "x64-windows",
+                "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+                "CMAKE_ASM_COMPILER": "$env{COMPILER_DIR}/cl.exe",
+                "CMAKE_C_COMPILER": "$env{COMPILER_DIR}/cl.exe",
+                "CMAKE_CXX_COMPILER": "$env{COMPILER_DIR}/cl.exe"
+            }
+        },
+        {
+            "name": "meal_sharing_legend (Debug-win)",
+            "description": "Debug Configuration",
+            "inherits": "default-win",
+            "binaryDir": "${sourceDir}/build/Debug-win",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "meal_sharing_legend (Release-win)",
+            "description": "Release Configuration",
+            "inherits": "default-win",
+            "binaryDir": "${sourceDir}/build/Release-win",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "meal_sharing_legend (Debug)",
+            "description": "Debug Configuration",
+            "inherits": "default",
+            "binaryDir": "${sourceDir}/build/Debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "meal_sharing_legend (Release)",
+            "description": "Release Configuration",
+            "inherits": "default",
+            "binaryDir": "${sourceDir}/build/Release",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "Debug",
+            "description": "Debug build",
+            "displayName": "",
+            "configurePreset": "meal_sharing_legend (Debug)"
+        },
+        {
+            "name": "Release",
+            "description": "Release build",
+            "displayName": "",
+            "configurePreset": "meal_sharing_legend (Release)"
+        },
+        {
+            "name": "Debug-win",
+            "description": "Debug build",
+            "displayName": "",
+            "configurePreset": "meal_sharing_legend (Debug-win)"
+        },
+        {
+            "name": "Release-win",
+            "description": "Release build",
+            "displayName": "",
+            "configurePreset": "meal_sharing_legend (Release-win)"
+        }
+    ]
+}
