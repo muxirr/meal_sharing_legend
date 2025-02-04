@@ -26,7 +26,11 @@ ResMgr::~ResMgr() = default;
 
 void ResMgr::load(SDL_Renderer *renderer) {
   using namespace std::filesystem;
-  for (const auto &entry : recursive_directory_iterator("../../assets")) {
+  auto dir = path("../../assets");
+  if(!exists(dir)) {
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", "assets文件夹不存在", NULL);
+  }
+  for (const auto &entry : recursive_directory_iterator(dir)) {
     if (entry.is_regular_file()) {
       auto path = entry.path();
       auto name = path.stem().string();
