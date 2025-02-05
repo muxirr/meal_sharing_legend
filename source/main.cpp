@@ -11,6 +11,7 @@ int WinMain() {
   SDL_Init(SDL_INIT_EVERYTHING);
   IMG_Init(IMG_INIT_PNG);
   Mix_Init(MIX_INIT_MP3);
+  Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
 
   return 0;
 }
