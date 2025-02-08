@@ -41,7 +41,7 @@ void ResMgr::load(SDL_Renderer *renderer) {
   auto dir = path("./assets");
   if (!exists(dir)) {
     SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error",
-                             "assets文件夹不存在", NULL);
+                             "assets文件夹不存在", SDL_GetKeyboardFocus());
     SDL_Quit();
     exit(1);
   }
