@@ -5,38 +5,40 @@
 #include "region.h"
 #include <string>
 
+
+
 class Bundle : public Region {
 public:
-  Bundle(int x, int y, Meal meal) : bundle_meal(meal) {
+  Bundle(int x, int y, Meal meal) : meal_bundle(meal) {
     switch (meal) {
     case Meal::BraisedChicken_Box:
-      type = "bc_box_bundle";
+      bundle_name = "bc_box_bundle";
       break;
     case Meal::MeatBall_Box:
-      type = "mb_box_bundle";
+      bundle_name = "mb_box_bundle";
       break;
     case Meal::RedCookedPork_Box:
-      type = "rcp_box_bundle";
+      bundle_name = "rcp_box_bundle";
       break;
     case Meal::Cola:
-      type = "cola_bundle";
+      bundle_name = "cola_bundle";
       break;
     case Meal::Sprite:
-      type = "sprite_bundle";
+      bundle_name = "sprite_bundle";
       break;
     case Meal::TakeoutBox:
-      type = "tb_bundle";
+      bundle_name = "tb_bundle";
       break;
     default:
       break;
     }
-    if (bundle_meal == Meal::BraisedChicken_Box ||
-        bundle_meal == Meal::MeatBall_Box ||
-        bundle_meal == Meal::RedCookedPork_Box) {
+    if (meal_bundle == Meal::BraisedChicken_Box ||
+        meal_bundle == Meal::MeatBall_Box ||
+        meal_bundle == Meal::RedCookedPork_Box) {
       rect = {x, y, 160, 88};
-    } else if (bundle_meal == Meal::Cola || bundle_meal == Meal::Sprite) {
+    } else if (meal_bundle == Meal::Cola || meal_bundle == Meal::Sprite) {
       rect = {x, y, 120, 124};
-    } else if (bundle_meal == Meal::TakeoutBox) {
+    } else if (meal_bundle == Meal::TakeoutBox) {
       rect = {x, y, 112, 96};
     }
   }
@@ -48,8 +50,8 @@ public:
   void on_cursor_up() override;
 
 private:
-  Meal bundle_meal = Meal::None;
-  std::string type;
+  Meal meal_bundle = Meal::None;
+  std::string bundle_name;
 };
 
 #endif // _BUNDLE_H_

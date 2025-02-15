@@ -1,4 +1,5 @@
 #include "cursor_mgr.h"
+
 #include "res_mgr.h"
 
 CursorMgr *CursorMgr::manager = nullptr;
@@ -10,45 +11,7 @@ CursorMgr *CursorMgr::instance() {
   return manager;
 }
 
-CursorMgr::CursorMgr() {
-  meal_callbacks.push_back(nullptr);
-  meal_callbacks.push_back([&](SDL_Renderer *renderer) {
-    return ResMgr::instance()->find_texture("cola");
-  });
-  meal_callbacks.push_back([&](SDL_Renderer *renderer) {
-    return ResMgr::instance()->find_texture("sprite");
-  });
-  meal_callbacks.push_back([&](SDL_Renderer *renderer) {
-    return ResMgr::instance()->find_texture("bc_hot_picked");
-  });
-  meal_callbacks.push_back([&](SDL_Renderer *renderer) {
-    return ResMgr::instance()->find_texture("bc_cold_picked");
-  });
-  meal_callbacks.push_back([&](SDL_Renderer *renderer) {
-    return ResMgr::instance()->find_texture("mb_hot_picked");
-  });
-  meal_callbacks.push_back([&](SDL_Renderer *renderer) {
-    return ResMgr::instance()->find_texture("mb_cold_picked");
-  });
-  meal_callbacks.push_back([&](SDL_Renderer *renderer) {
-    return ResMgr::instance()->find_texture("rcp_hot_picked");
-  });
-  meal_callbacks.push_back([&](SDL_Renderer *renderer) {
-    return ResMgr::instance()->find_texture("rcp_cold_picked");
-  });
-  meal_callbacks.push_back([&](SDL_Renderer *renderer) {
-    return ResMgr::instance()->find_texture("bc_box");
-  });
-  meal_callbacks.push_back([&](SDL_Renderer *renderer) {
-    return ResMgr::instance()->find_texture("mb_box");
-  });
-  meal_callbacks.push_back([&](SDL_Renderer *renderer) {
-    return ResMgr::instance()->find_texture("rcp_box");
-  });
-  meal_callbacks.push_back([&](SDL_Renderer *renderer) {
-    return ResMgr::instance()->find_texture("tb_picked");
-  });
-}
+CursorMgr::CursorMgr() = default;
 
 CursorMgr::~CursorMgr() = default;
 
@@ -83,16 +46,16 @@ void CursorMgr::on_input(const SDL_Event &event) {
 }
 
 void CursorMgr::on_render(SDL_Renderer *renderer) {
-  // 绘制拿起的物品,
+  // 绘制拿起的物品;
   if (meal_picked != Meal::None) {
     SDL_Texture *texture =
-        meal_callbacks[static_cast<int>(meal_picked)](renderer);
+        ResMgr::instance()->find_texture(meal_picked_map[meal_picked]);
     SDL_Rect rect_picked = {pos_cursor.x, pos_cursor.y, 0, 0};
     SDL_QueryTexture(texture, nullptr, nullptr, &rect_picked.w, &rect_picked.h);
     SDL_RenderCopy(renderer, texture, nullptr, &rect_picked);
   }
 
-  // 绘制鼠标指针,
+  // 绘制鼠标指针;
   SDL_Rect rect_cursor = {pos_cursor.x, pos_cursor.y, 64, 64};
   SDL_Texture *texture_cursor = ResMgr::instance()->find_texture(
       is_mouse_lbtn_down ? "cursor_down" : "cursor_idle");

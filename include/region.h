@@ -15,7 +15,7 @@ public:
   virtual void on_cursor_down() {}
   virtual void on_cursor_up() {}
 
-  void set_rect(const SDL_Rect rect) { this->rect = rect; }
+  void set_rect(const SDL_Rect r) { rect = r; }
 
   const SDL_Rect &get_rect() const { return rect; }
 

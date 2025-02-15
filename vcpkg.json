@@ -1,5 +1,5 @@
 {
-  "name": "chicken-evil",
+  "name": "meal-sharing-legend",
   "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
   "builtin-baseline": "fc5118086f5db341ee4ab3a7d4d64c0f39896270",
   "dependencies": [
