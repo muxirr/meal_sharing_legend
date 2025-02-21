@@ -15,7 +15,7 @@ public:
   void on_cursor_up() override;
 
 private:
-  Meal meal = Meal::None;
+  Meal meal = Meal::TakeoutBox;
 
 private:
   bool can_place(Meal target);

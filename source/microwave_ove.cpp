@@ -4,9 +4,9 @@
 #include "res_mgr.h"
 
 MicrowaveOven::MicrowaveOven(int x, int y) : Region({x, y, 284, 176}) {
-  timer.set_wait_time(9);
+  timer.set_wait_time(9.0f);
   timer.set_one_shot(true);
-  timer.set_time_out([this]() {
+  timer.set_time_out([&]() {
     is_working = false;
     Mix_PlayChannel(-1, ResMgr::instance()->find_audio("mo_complete"), 0);
   });
@@ -20,13 +20,13 @@ void MicrowaveOven::on_cursor_up() {
     meal_target = CursorMgr::instance()->get_picked();
     switch (meal_target) {
     case Meal::BraisedChicken_Cold:
-      CursorMgr::instance()->set_picked(Meal::BraisedChicken_Hot);
+      meal_target = Meal::BraisedChicken_Hot;
       break;
     case Meal::MeatBall_Cold:
-      CursorMgr::instance()->set_picked(Meal::MeatBall_Hot);
+      meal_target = Meal::MeatBall_Hot;
       break;
     case Meal::RedCookedPork_Cold:
-      CursorMgr::instance()->set_picked(Meal::RedCookedPork_Hot);
+      meal_target = Meal::RedCookedPork_Hot;
       break;
     default:
       break;
@@ -56,7 +56,6 @@ void MicrowaveOven::on_update(float delta) {
 void MicrowaveOven::on_render(SDL_Renderer *renderer) {
   SDL_Texture *texture = ResMgr::instance()->find_texture(
       is_working ? "mo_working" : "mo_opening");
-
   SDL_RenderCopy(renderer, texture, nullptr, &rect);
   if (!is_working) {
     SDL_Texture *texture_content = nullptr;

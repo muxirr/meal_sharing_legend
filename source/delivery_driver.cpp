@@ -71,8 +71,8 @@ void DeliveryDriver::on_render(SDL_Renderer *renderer) {
   SDL_Rect rect_bubble = {rect.x + 175, rect.y + 55, 76, 139};
   SDL_RenderCopy(renderer, ResMgr::instance()->find_texture("bubble"), nullptr,
                  &rect_bubble);
-  for (int i = 0; i < num_drink; i++) {
-    SDL_Texture *texture_meal = nullptr;
+  for (int i = 0; i < num_dish; i++) {
+    SDL_Texture *texture_meal;
     switch (meal_list[i]) {
     case Meal::BraisedChicken_Hot:
       texture_meal = ResMgr::instance()->find_texture("bc_icon");
@@ -95,7 +95,7 @@ void DeliveryDriver::on_render(SDL_Renderer *renderer) {
   }
   // 绘制饮料;
   for (int i = num_dish; i < meal_list.size(); i++) {
-    SDL_Texture *texture_drink = nullptr;
+    SDL_Texture *texture_drink;
     switch (meal_list[i]) {
     case Meal::Cola:
       texture_drink = ResMgr::instance()->find_texture("cola_icon");

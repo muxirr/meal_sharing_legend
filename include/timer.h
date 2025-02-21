@@ -13,12 +13,12 @@ public:
     shotted = false;
   }
 
-  void set_wait_time(float wait_time) { wait_time = wait_time; }
+  void set_wait_time(float wait_time) { this->wait_time = wait_time; }
 
-  void set_one_shot(bool one_shot) { one_shot = one_shot; }
+  void set_one_shot(bool one_shot) { this->one_shot = one_shot; }
 
   void set_time_out(std::function<void()> on_timeout) {
-    on_timeout = on_timeout;
+    this->on_timeout = on_timeout;
   }
 
   void pause() { paused = true; }

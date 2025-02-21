@@ -37,7 +37,7 @@ void TakeoutBox::on_cursor_down() {
 }
 
 void TakeoutBox::on_render(SDL_Renderer *renderer) {
-  SDL_Texture *texture;
+  SDL_Texture *texture = nullptr;
   switch (meal) {
   case Meal::TakeoutBox:
     texture = ResMgr::instance()->find_texture("tb");
