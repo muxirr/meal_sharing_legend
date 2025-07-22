@@ -16,10 +16,10 @@
             }
         },
         {
-            "name": "meal_sharing_legend (Debug-win)",
+            "name": "meal_sharing_legend_debug_msvc",
             "description": "Debug Configuration",
             "inherits": "default",
-            "binaryDir": "${sourceDir}/build/Debug-win",
+            "binaryDir": "${sourceDir}/build/debug_msvc",
             "environment": {
                 "VCPKG_DEFAULT_HOST_TRIPLET": "x64-windows",
                 "VCPKG_DEFAULT_TRIPLET": "x64-windows"
@@ -30,10 +30,10 @@
             }
         },
         {
-            "name": "meal_sharing_legend (Release-win)",
+            "name": "meal_sharing_legend_release_msvc",
             "description": "Release Configuration",
             "inherits": "default",
-            "binaryDir": "${sourceDir}/build/Release-win",
+            "binaryDir": "${sourceDir}/build/release_msvc",
             "environment": {
                 "VCPKG_DEFAULT_HOST_TRIPLET": "x64-windows",
                 "VCPKG_DEFAULT_TRIPLET": "x64-windows"
@@ -44,19 +44,19 @@
             }
         },
         {
-            "name": "meal_sharing_legend (Debug)",
+            "name": "meal_sharing_legend_debug_gnu",
             "description": "Debug Configuration",
             "inherits": "default",
-            "binaryDir": "${sourceDir}/build/Debug",
+            "binaryDir": "${sourceDir}/build/debug_gnu",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug"
             }
         },
         {
-            "name": "meal_sharing_legend (Release)",
+            "name": "meal_sharing_legend_release_gnu",
             "description": "Release Configuration",
             "inherits": "default",
-            "binaryDir": "${sourceDir}/build/Release",
+            "binaryDir": "${sourceDir}/build/release_gnu",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
             }
@@ -64,28 +64,28 @@
     ],
     "buildPresets": [
         {
-            "name": "Debug",
+            "name": "debug_gnu",
             "description": "Debug build",
             "displayName": "",
-            "configurePreset": "meal_sharing_legend (Debug)"
+            "configurePreset": "meal_sharing_legend_debug_gnu"
         },
         {
-            "name": "Release",
+            "name": "release_gnu",
             "description": "Release build",
             "displayName": "",
-            "configurePreset": "meal_sharing_legend (Release)"
+            "configurePreset": "meal_sharing_legend_release_gnu"
         },
         {
-            "name": "Debug-win",
+            "name": "debug_msvc",
             "description": "Debug build",
             "displayName": "",
-            "configurePreset": "meal_sharing_legend (Debug-win)"
+            "configurePreset": "meal_sharing_legend_debug_msvc"
         },
         {
-            "name": "Release-win",
+            "name": "release_msvc",
             "description": "Release build",
             "displayName": "",
-            "configurePreset": "meal_sharing_legend (Release-win)"
+            "configurePreset": "meal_sharing_legend_release_msvc"
         }
     ]
 }

@@ -29,7 +29,12 @@ void on_update(float delta);
 // 游戏渲染;
 void on_render(SDL_Renderer *renderer);
 
-int WinMain() {
+#ifdef _DEBUG
+int main(int argc, char **argv)
+#else
+int WinMain(int argc, char **argv)
+#endif
+{
   using namespace std::chrono;
   // 初始化SDL;
   SDL_Init(SDL_INIT_EVERYTHING);
@@ -41,8 +46,10 @@ int WinMain() {
 
   TTF_Font *font = TTF_OpenFont("./assets/IPix.ttf", 28);
 
+  // 为了通过msvc的编译,天知道为什么msvc使用utf8中文编译会出错;
+  std::string title = "拼好饭传奇\0";
   SDL_Window *window =
-      SDL_CreateWindow("拼好饭传奇", SDL_WINDOWPOS_CENTERED,
+      SDL_CreateWindow(title.substr(0, 15).c_str(), SDL_WINDOWPOS_CENTERED,
                        SDL_WINDOWPOS_CENTERED, 1280, 720, SDL_WINDOW_SHOWN);
 
   SDL_Renderer *renderer =

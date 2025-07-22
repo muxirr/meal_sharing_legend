@@ -15,7 +15,7 @@ ResMgr *ResMgr::instance() {
 Mix_Chunk *ResMgr::find_audio(const std::string &name) {
   if (audio_pool.find(name) == audio_pool.end()) {
     char msg[256];
-    sprintf(msg, "音频%s不存在", name.c_str());
+    sprintf(msg, "Audio:%s not exists", name.c_str());
     SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "ERROR", msg,
                              SDL_GetKeyboardFocus());
   }
@@ -25,7 +25,7 @@ Mix_Chunk *ResMgr::find_audio(const std::string &name) {
 SDL_Texture *ResMgr::find_texture(const std::string &name) {
   if (texture_pool.find(name) == texture_pool.end()) {
     char msg[256];
-    sprintf(msg, "图片%s不存在", name.c_str());
+    sprintf(msg, "Image:%s not exists", name.c_str());
     SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "ERROR", msg,
                              SDL_GetKeyboardFocus());
   }
@@ -41,7 +41,7 @@ void ResMgr::load(SDL_Renderer *renderer) {
   auto dir = path("./assets");
   if (!exists(dir)) {
     SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error",
-                             "assets文件夹不存在", SDL_GetKeyboardFocus());
+                             "assets not exists", SDL_GetKeyboardFocus());
     SDL_Quit();
     exit(1);
   }
